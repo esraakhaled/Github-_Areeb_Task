@@ -25,5 +25,9 @@ class RepositoryCell: UITableViewCell {
         creationDateLbl.text = repository.creationDate
         repoOwnerNameLbl.text = repository.owner?.login
     }
+    
+    override func prepareForReuse() {
+        repoImgView?.image = nil
+    }
     }
 
