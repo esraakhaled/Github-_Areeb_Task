@@ -18,14 +18,41 @@ class RepositoriesViewController: UIViewController {
     
     //MARK: - Vars
     private var presenter: RepositoriesPresenter!
+    var isLoading = false
+    
+    //MARK: - Constants
+    let loader = UIActivityIndicatorView(style: .large)
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Repositories"
+        setupLoader()
         presenter = RepositoriesPresenter(self)
         configureTableView()
         presenter.getRepositories()
-        self.title = "Repositories"
     }
+    
+    //MARK: - Set Loader Function
+    func setupLoader() {
+        loader.color = .blue
+        
+        let backgroundView = UIView(frame: self.repositoriesTableView.bounds)
+        backgroundView.backgroundColor = UIColor.white
+        backgroundView.addSubview(loader)
+        
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        
+        let centerXConstraint = loader.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor)
+        let centerYConstraint = loader.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+        
+        NSLayoutConstraint.activate([centerXConstraint, centerYConstraint])
+        self.repositoriesTableView.backgroundView = backgroundView
+        
+        loader.startAnimating()
+    }
+    
     
     //MARK: - Configure TableView
     private func configureTableView() {
@@ -69,12 +96,13 @@ extension RepositoriesViewController: RepositoryView {
             return
         }
         
-        cell.creationDateLbl.text = presenter.formatDate(date ?? "Invalid Date")
+        cell.creationDateLbl.text = presenter.formatDate(date)
     }
     
     func reloadRepositoriesTableView() {
         DispatchQueue.main.async { [weak self] in
             self?.repositoriesTableView.reloadData()
+            self?.loader.stopAnimating()
         }
     }
 }
