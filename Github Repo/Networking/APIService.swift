@@ -13,7 +13,7 @@ class APIService {
     
     func getRepositories(completion: @escaping(_ repositories: [Repository]?, _ error: Error?) -> Void){
         
-        guard let url = URL(string: "https://api.github.com/repositories") else { return }
+        guard let url = URL(string: EndPoint.repositories) else { return }
         
         let session = URLSession.shared
         let request = URLRequest(url: url)

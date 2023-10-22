@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02D2366B2AE540510021A743 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2366A2AE540510021A743 /* EndPoint.swift */; };
 		02D801052AE3340A00F17D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D801042AE3340A00F17D2B /* AppDelegate.swift */; };
 		02D801072AE3340A00F17D2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D801062AE3340A00F17D2B /* SceneDelegate.swift */; };
 		02D8010E2AE3340D00F17D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02D8010D2AE3340D00F17D2B /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02D2366A2AE540510021A743 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		02D801012AE3340A00F17D2B /* Github Repo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Repo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D801042AE3340A00F17D2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D801062AE3340A00F17D2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 			children = (
 				02D801272AE42AFC00F17D2B /* Scenes */,
 				02D801242AE3D1B700F17D2B /* Extensions */,
-				02D801212AE3447100F17D2B /* Services */,
+				02D801212AE3447100F17D2B /* Networking */,
 				02D8011C2AE3420600F17D2B /* Cells */,
 				02D801042AE3340A00F17D2B /* AppDelegate.swift */,
 				02D801062AE3340A00F17D2B /* SceneDelegate.swift */,
@@ -91,12 +93,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		02D801212AE3447100F17D2B /* Services */ = {
+		02D801212AE3447100F17D2B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				02D801222AE344A800F17D2B /* APIService.swift */,
+				02D2366A2AE540510021A743 /* EndPoint.swift */,
 			);
-			path = Services;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		02D801242AE3D1B700F17D2B /* Extensions */ = {
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02D8011F2AE342DE00F17D2B /* RepositoryCell.swift in Sources */,
+				02D2366B2AE540510021A743 /* EndPoint.swift in Sources */,
 				02D801052AE3340A00F17D2B /* AppDelegate.swift in Sources */,
 				02D801262AE3D1E900F17D2B /* UIImageView + Extension.swift in Sources */,
 				02D8012A2AE42BC200F17D2B /* RepositoriesViewController.swift in Sources */,
