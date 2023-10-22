@@ -39,26 +39,31 @@ class APIService {
         task.resume()
     }
     //MARK: - Get Creation Date Function
-    func getCreationDate(for urlString: String?) async -> Repository? {
+    func getCreationDate(for urlString: String?, completion: @escaping (_ repository: Repository?, _ error: Error?) -> Void) {
         let urlString = urlString ?? ""
         guard let url = URL(string: urlString) else {
-            return nil
+            completion(nil, nil)
+            return
         }
+        
         let session = URLSession.shared
         let request = URLRequest(url: url)
-        return await withCheckedContinuation { continuation in
-            session.dataTask(with: request) { data, response, error in
-                guard let data = data else {
-                    return
-                }
-                do {
-                    let response = try JSONDecoder().decode(Repository?.self, from: data)
-                    return continuation.resume(returning: response)
-                }
-                catch {
-                    print(error.localizedDescription)
-                }
-            }.resume()
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(Repository.self, from: data)
+                completion(response, nil)
+            } catch {
+                completion(nil, error)
+            }
         }
+        
+        task.resume()
     }
-}
+    }
+

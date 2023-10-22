@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RepositoriesPresenter {
     
@@ -37,6 +38,27 @@ class RepositoriesPresenter {
             }
             DispatchQueue.main.async {
                 self.view?.reloadRepositoriesTableView()
+            }
+        }
+    }
+    
+    func getCreationDate(for urlString: String?, at indexPath: IndexPath, in tableView: UITableView) {
+        guard let urlString = urlString else {
+            return
+        }
+        
+        APIService.sharedService.getCreationDate(for: urlString) { (repository, error) in
+            guard let repository = repository else {
+                // Handle error
+                return
+            }
+            
+            // Use the repository object to get the creation date
+            let creationDate = repository.created_at
+            
+            // Update the view with the creation date
+            DispatchQueue.main.async {
+                self.view?.displayCreationDate(creationDate!, at: indexPath,in: tableView)
             }
         }
     }

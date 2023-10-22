@@ -8,6 +8,7 @@ import UIKit
 
 protocol RepositoryView: AnyObject {
     func reloadRepositoriesTableView()
+    func displayCreationDate(_ date: String, at indexPath: IndexPath, in tableView: UITableView)
 }
 
 class RepositoriesViewController: UIViewController {
@@ -47,6 +48,10 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
             return UITableViewCell()
         }
         cell.configureCell(with: presenter.getUsedRepository(at: indexPath.row))
+        let repository = presenter.getUsedRepository(at: indexPath.row)
+        let urlString = repository.url
+        
+        presenter.getCreationDate(for: urlString, at: indexPath, in: tableView)
         let dateString = cell.creationDateLbl.text
         cell.creationDateLbl.text = presenter.formatDate(dateString ?? "Invalid Date")
         return cell
@@ -59,6 +64,14 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
 
 //MARK: - View Extension
 extension RepositoriesViewController: RepositoryView {
+    func displayCreationDate(_ date: String, at indexPath: IndexPath, in tableView: UITableView) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? RepositoryCell else {
+            return
+        }
+        
+        cell.creationDateLbl.text = presenter.formatDate(date ?? "Invalid Date")
+    }
+    
     func reloadRepositoriesTableView() {
         DispatchQueue.main.async { [weak self] in
             self?.repositoriesTableView.reloadData()
