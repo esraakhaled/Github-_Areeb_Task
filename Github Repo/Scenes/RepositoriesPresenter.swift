@@ -54,7 +54,7 @@ class RepositoriesPresenter {
             }
             
             // Use the repository object to get the creation date
-            let creationDate = repository.created_at
+            let creationDate = repository.creationDate
             
             // Update the view with the creation date
             DispatchQueue.main.async {

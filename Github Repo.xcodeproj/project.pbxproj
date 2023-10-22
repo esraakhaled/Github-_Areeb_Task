@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02D2366C2AE5449D0021A743 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02D8011A2AE33D7300F17D2B /* Repository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		02D800F82AE3340A00F17D2B = {
 			isa = PBXGroup;
 			children = (
@@ -70,13 +78,13 @@
 		02D801032AE3340A00F17D2B /* Github Repo */ = {
 			isa = PBXGroup;
 			children = (
+				02D2366C2AE5449D0021A743 /* Model */,
 				02D801272AE42AFC00F17D2B /* Scenes */,
 				02D801242AE3D1B700F17D2B /* Extensions */,
 				02D801212AE3447100F17D2B /* Networking */,
 				02D8011C2AE3420600F17D2B /* Cells */,
 				02D801042AE3340A00F17D2B /* AppDelegate.swift */,
 				02D801062AE3340A00F17D2B /* SceneDelegate.swift */,
-				02D8011A2AE33D7300F17D2B /* Repository.swift */,
 				02D8010D2AE3340D00F17D2B /* Assets.xcassets */,
 				02D8010F2AE3340D00F17D2B /* LaunchScreen.storyboard */,
 				02D801122AE3340D00F17D2B /* Info.plist */,

@@ -18,11 +18,11 @@ class RepositoryCell: UITableViewCell {
     func configureCell(with repository: Repository){
         repoNameLbl.text = repository.name
         guard let owner = repository.owner else { return }
-        guard let imageURL = owner.avatar_url else { return }
+        guard let imageURL = owner.avatarURL else { return }
         repoImgView.layer.cornerRadius = repoImgView.frame.size.width/2
         repoImgView.layer.masksToBounds = true
         repoImgView.load(urlString: imageURL)
-        creationDateLbl.text = repository.created_at
+        creationDateLbl.text = repository.creationDate
         repoOwnerNameLbl.text = repository.owner?.login
     }
     }
