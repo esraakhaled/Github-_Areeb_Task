@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum EndPoint{
+enum EndPoint {
     static let repositories = "https://api.github.com/repositories"
 }

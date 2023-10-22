@@ -29,8 +29,9 @@ class RepositoriesViewController: UIViewController {
         
         self.title = "Repositories"
         setupLoader()
-        presenter = RepositoriesPresenter(self)
         configureTableView()
+        
+        presenter = RepositoriesPresenter(self)
         presenter.getRepositories()
     }
     
@@ -79,8 +80,6 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
         let urlString = repository.url
         
         presenter.getCreationDate(for: urlString, at: indexPath, in: tableView)
-        let dateString = cell.creationDateLbl.text
-        cell.creationDateLbl.text = presenter.formatDate(dateString ?? "Invalid Date")
         return cell
     }
     

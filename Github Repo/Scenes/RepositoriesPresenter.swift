@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RepositoriesPresenter {
+final class RepositoriesPresenter {
     
     //MARK: - Vars
     var repositories: [Repository] = []
@@ -26,7 +26,7 @@ class RepositoriesPresenter {
     
     //MARK: - Public Functions
     func getRepositories() {
-        APIService.sharedService.getRepositories { (repositories: [Repository]?, error) in
+        APIService.shared.getRepositories { (repositories: [Repository]?, error) in
             guard let repositories = repositories else {
                 return
             }
@@ -47,7 +47,7 @@ class RepositoriesPresenter {
             return
         }
         
-        APIService.sharedService.getCreationDate(for: urlString) { (repository, error) in
+        APIService.shared.getCreationDate(for: urlString) { (repository, error) in
             guard let repository = repository else {
                 // Handle error
                 return
@@ -120,7 +120,7 @@ extension RepositoriesPresenter {
         if repositoriesPerPages >= limit {
             return
         }
-         if repositoriesPerPages >= limit - 10 {
+         else if repositoriesPerPages >= limit - 10 {
             for i in repositoriesPerPages..<limit {
                 paginationRepositories.append(repositories[i])
             }

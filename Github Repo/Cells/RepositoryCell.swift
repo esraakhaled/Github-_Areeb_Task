@@ -17,13 +17,12 @@ class RepositoryCell: UITableViewCell {
     //MARK: - Configure Cell
     func configureCell(with repository: Repository) {
         repoNameLbl.text = repository.name
-        guard let owner = repository.owner else { return }
-        guard let imageURL = owner.avatarURL else { return }
+        let imageURL = repository.owner.avatarURL
         repoImgView.layer.cornerRadius = repoImgView.frame.size.width / 2
         repoImgView.layer.masksToBounds = true
         repoImgView.load(urlString: imageURL)
         creationDateLbl.text = repository.creationDate
-        repoOwnerNameLbl.text = repository.owner?.login
+        repoOwnerNameLbl.text = repository.owner.login
     }
     
     override func prepareForReuse() {

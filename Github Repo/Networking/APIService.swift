@@ -7,11 +7,15 @@
 
 import Foundation
 
-class APIService {
+enum ErrorType: Error {
+    case dataNotFound
+}
+
+final class APIService {
     
-    static let sharedService = APIService()
+    static let shared = APIService()
     
-    func getRepositories(completion: @escaping(_ repositories: [Repository]?, _ error: Error?) -> Void){
+    func getRepositories(completion: @escaping(_ repositories: [Repository]?, _ error: Error?) -> Void) {
         
         guard let url = URL(string: EndPoint.repositories) else { return }
         
@@ -19,9 +23,13 @@ class APIService {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { data, response, error in
             
-            guard error == nil else { return }
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
             
             guard let data = data else {
+                completion(nil, ErrorType.dataNotFound)
                 return
             }
             
@@ -65,5 +73,5 @@ class APIService {
         
         task.resume()
     }
-    }
+}
 
