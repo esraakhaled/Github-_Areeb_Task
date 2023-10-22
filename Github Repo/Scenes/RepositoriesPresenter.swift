@@ -53,7 +53,6 @@ class RepositoriesPresenter {
                 return
             }
             
-            // Use the repository object to get the creation date
             let creationDate = repository.creationDate
             
             // Update the view with the creation date
@@ -118,6 +117,9 @@ class RepositoriesPresenter {
 //MARK: - private funcs
 extension RepositoriesPresenter {
     private func fetchMoreRepositoriesIfNeeded() {
+        if repositoriesPerPages >= limit {
+            return
+        }
          if repositoriesPerPages >= limit - 10 {
             for i in repositoriesPerPages..<limit {
                 paginationRepositories.append(repositories[i])
