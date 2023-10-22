@@ -1,8 +1,8 @@
 # Github_Areeb_Task
 Areeb Technology Task
 
-![Simulator Screen Recording - iPhone 14 Pro - 2023-10-22 at 15 42 03](https://github.com/esraakhaled/Github-_Areeb_Task/assets/45472327/45a574a9-1b25-4762-a7ac-89c8a0aa9c62)
 
+![Simulator Screen Recording - iPhone 14 Pro - 2023-10-22 at 15 51 44](https://github.com/esraakhaled/Github-_Areeb_Task/assets/45472327/a43f8356-e3fc-4773-ad33-a17fa09b0bc9)
 
 
 
