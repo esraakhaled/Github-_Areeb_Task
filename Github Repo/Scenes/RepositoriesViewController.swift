@@ -66,7 +66,7 @@ class RepositoriesViewController: UIViewController {
 //MARK: - TableView DataSource
 extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.returnRepositoriesCount()
+        presenter.repositoriesCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

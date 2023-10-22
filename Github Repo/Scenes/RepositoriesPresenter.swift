@@ -63,7 +63,7 @@ class RepositoriesPresenter {
         }
     }
     
-    func returnRepositoriesCount() -> Int {
+    func repositoriesCount() -> Int {
         return paginationRepositories.count
     }
     
@@ -110,18 +110,15 @@ class RepositoriesPresenter {
     
     func willDisplayRepository(at row: Int){
         if row == paginationRepositories.count - 1 {
-            addNewRepositories()
+            fetchMoreRepositoriesIfNeeded()
         }
     }
 }
 
 //MARK: - private funcs
 extension RepositoriesPresenter {
-    private func addNewRepositories() {
-        if repositoriesPerPages >= limit {
-            return
-        }
-        else if repositoriesPerPages >= limit - 10 {
+    private func fetchMoreRepositoriesIfNeeded() {
+         if repositoriesPerPages >= limit - 10 {
             for i in repositoriesPerPages..<limit {
                 paginationRepositories.append(repositories[i])
             }
